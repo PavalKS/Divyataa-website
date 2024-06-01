@@ -1,0 +1,101 @@
+body {
+    font-family: 'Ghayathri', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.logo-header {
+    width: 100px;
+    height: auto;
+    margin-right: 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #6d0680;
+    width: 100%;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #fff;
+}
+
+nav ul li a:hover {
+    background-color: #d784ca;
+}
+
+nav ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    padding: 0;
+}
+
+nav ul ul li a {
+    padding: 10px 20px;
+}
+
+nav ul li:hover > ul {
+    display: block;
+}
+
+.content {
+    padding: 20px;
+}
+
+.section {
+    margin-bottom: 40px;
+}
+
+.section h2 {
+    font-size: 20px;
+    margin-top: 0;
+}
+
+.section p {
+    margin: 10px 0;
+}
+
+.contact-info {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info h3 {
+    margin-top: 0;
+}
+
+.programs-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.programs-list li {
+    margin: 5px 0;
+}
