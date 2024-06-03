@@ -13,22 +13,28 @@
 </head>
 <body>
     <header>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
         <img src="Images/logo-plain.png" alt="Divyataa Logo" class="logo-header">
         <h1 class="school-name-header">Divyataa Enriched Montessori Foundation</h1>
     </header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#">About</a>
-                <ul>
-                    <li><a href="about-us.html">About Us</a></li>
-                    <li><a href="about-montessori.html">About Montessori</a></li>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item dropdown-parent">
+                <a href="#" class="nav-link" onclick="toggleDropdown(event)">About</a>
+                <ul class="dropdown">
+                    <li class="nav-item"><a href="about-us.html" class="nav-link">About Us</a></li>
+                    <li class="nav-item"><a href="about-montessori.html" class="nav-link">About Montessori</a></li>
                 </ul>
             </li>
-            <li><a href="programs-offered.html">Programs Offered</a></li>
-            <li><a href="School-and-Campus.html">School & Campus</a></li>
-            <li><a href="Gallery.html">Gallery</a></li>
-            <li><a href="Contact-us.html">Contact Us</a></li>
+            <li class="nav-item"><a href="programs-offered.html" class="nav-link">Programs Offered</a></li>
+            <li class="nav-item"><a href="School-and-Campus.html" class="nav-link">School & Campus</a></li>
+            <li class="nav-item"><a href="Gallery.html" class="nav-link">Gallery</a></li>
+            <li class="nav-item"><a href="Contact-us.html" class="nav-link">Contact Us</a></li>
         </ul>
     </nav>
 </body>

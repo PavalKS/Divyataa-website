@@ -8,14 +8,22 @@ body {
 header {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     padding: 20px;
+    position: relative;
+    z-index: 1000; /* Ensure header is above other content */
 }
 
 .logo-header {
     width: 100px;
     height: auto;
     margin-right: 20px;
+}
+
+.school-name-header {
+    font-size: 1.5em;
+    text-align: center;
+    flex: 1;
 }
 
 nav {
@@ -60,7 +68,11 @@ nav ul ul li a {
     padding: 10px 20px;
 }
 
-nav ul li:hover > ul {
+.dropdown-parent:hover > .dropdown {
+    display: block;
+}
+
+.dropdown-parent .dropdown.active {
     display: block;
 }
 
@@ -100,25 +112,77 @@ nav ul li:hover > ul {
     margin: 5px 0;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .logo-header {
-        margin: 0 auto;
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 20px;
+    z-index: 2000; /* Ensure hamburger is above other content */
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 4px 0;
+    background-color: #000; /* Set to black for visibility */
+    transition: all 0.3s ease-in-out;
+}
+
+@media only screen and (max-width: 768px) {
+    header {
+        padding: 10px;
+        text-align: left;
+        align-items: left;
+        align-content: left;
     }
 
-    .school-name-header {
-        text-align: center;
-        width: 100%;
-        font-size: 1.2em;
-        margin-top: 10px;
-    }
-
-    nav ul {
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 5rem;
         flex-direction: column;
-        align-items: center;
+        background-color: #6d0680;
+        width: 100%;
+        border-radius: 10px;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        z-index: 1500; /* Higher value than other content */
     }
 
-    nav ul li a {
-        padding: 10px 15px;
+    .nav-menu.active {
+        left: 0;
+        margin-top: 70px;
+    }
+
+    .nav-item {
+        margin: 0.5rem 0;
+        position: relative; /* Ensure the parent li is positioned */
+    }
+
+    .dropdown {
+        display: none;
+        position: relative; /* Change to relative */
+    }
+
+    .dropdown-parent.active .dropdown {
+        display: block;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(11px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-11px) rotate(-45deg);
     }
 }
