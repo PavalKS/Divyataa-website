@@ -1,5 +1,17 @@
+@font-face {
+    font-family: 'Gayathri-Regular';
+    src: url('Fonts/Gayathri-Regular.woff') format('woff'),
+         url('Fonts/Gayathri-Regular.ttf') format('truetype');
+}  
+
+@font-face {
+    font-family: 'Gayathri-Bold';
+    src: url('Fonts/Gayathri-Bold.woff') format('woff'),
+         url('Fonts/Gayathri-Bold.ttf') format('truetype');
+}   
+
 body {
-    font-family: 'Ghayathri', sans-serif;
+    font-family: 'Gayathri-Regular', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #ffffff;
@@ -24,6 +36,7 @@ header {
     font-size: 1.5em;
     text-align: center;
     flex: 1;
+    font-family: 'Gayathri-Bold', sans-serif;
 }
 
 nav {
@@ -123,9 +136,9 @@ nav ul ul li a {
 .bar {
     display: block;
     width: 25px;
-    height: 3px;
-    margin: 4px 0;
-    background-color: #000; /* Set to black for visibility */
+    height: 2px;
+    margin: 3px 0;
+    background-color: #4a0065; /* Set to black for visibility */
     transition: all 0.3s ease-in-out;
 }
 
@@ -189,10 +202,10 @@ nav ul ul li a {
     }
 
     .hamburger.active .bar:nth-child(1) {
-        transform: translateY(11px) rotate(45deg);
+        transform: translateY(8px) rotate(45deg);
     }
 
     .hamburger.active .bar:nth-child(3) {
-        transform: translateY(-11px) rotate(-45deg);
+        transform: translateY(-8px) rotate(-45deg);
     }
 }
