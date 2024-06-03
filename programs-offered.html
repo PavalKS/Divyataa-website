@@ -25,7 +25,7 @@
 
         .gallery-item {
             position: relative;
-            width: calc(25% - 20px);
+            width: 200px;
             height: 200px; /* Fixed height for all images */
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             overflow: hidden; /* Hide overflow for cropping effect */
@@ -69,6 +69,12 @@
         .section p {
             margin: 10px 0;
         }
+        @media only screen and (max-width: 768px) {
+            .gallery-item {
+            width: 100px;
+            height: 100px; /* Fixed height for all images */
+        }
+        }
     </style>
 </head>
 <body>
@@ -78,7 +84,9 @@
             <span class="bar"></span>
             <span class="bar"></span>
         </div>
-        <img src="Images/logo-plain.png" alt="Divyataa Logo" class="logo-header">
+        <a href="index.html">
+            <img src="Images/logo-plain.png" alt="Divyataa Logo" class="logo-header">
+        </a>
         <h1 class="school-name-header">Divyataa Enriched Montessori Foundation</h1>
     </header>
     <nav class="navbar">
