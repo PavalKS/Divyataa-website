@@ -32,29 +32,40 @@ document.addEventListener("click", function(event) {
         }
     });
 });
+  
 
-document.addEventListener('DOMContentLoaded', () => {
-    const loader = document.querySelector('.loader');
+function openModal(title) {
+    const modal = document.getElementById('program-modal');
+    document.getElementById('modal-title').textContent = title;
+    document.getElementById('modal-desc').innerHTML = programData[title] || '<p>Information coming soon.</p>';
+    modal.classList.add('show');
+  }
   
-    // 1. Hide loader after initial tiles animation completes
-    loader.addEventListener('transitionend', (e) => {
-      if (e.propertyName === 'width' && loader.classList.contains('loader--active')) {
-        loader.classList.remove('loader--active');
+  function closeModal() {
+    const modal = document.getElementById('program-modal');
+    modal.classList.remove('show');
+  }
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll('a[href]');
+  
+    links.forEach(link => {
+      // Skip external links and hash links
+      const isExternal = link.hostname !== window.location.hostname;
+      const isHash = link.getAttribute('href').startsWith('#');
+  
+      if (!isExternal && !isHash) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          const href = this.getAttribute('href');
+  
+          document.body.classList.add('fade-out');
+  
+          setTimeout(() => {
+            window.location.href = href;
+          }, 250); // match your CSS transition duration
+        });
       }
-    }, { once: true });
-  
-    // 2. Before navigating away, replay the tile loader, then go
-    document.querySelectorAll('.nav-link').forEach(link => {
-      // skip dropdown toggles
-      if (link.parentElement.classList.contains('dropdown-parent')) return;
-  
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        loader.classList.add('loader--active');
-        loader.offsetWidth; // force reflow to restart transitions
-        setTimeout(() => window.location = link.href, 700);
-      });
     });
   });
-  
   

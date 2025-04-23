@@ -77,7 +77,10 @@
 
         /* Full-page sleek modal */
         .modal {
-        display: none;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 1s ease, visibility 1s ease;
+        display: flex;
         position: fixed;
         z-index: 1000;
         left: 0;
@@ -85,10 +88,17 @@
         width: 100%;
         height: 100%;
         background-color: rgba(0, 0, 0, 0.95);
-        overflow: hidden;
         padding: 20px;
         box-sizing: border-box;
+        align-items: center;
+        justify-content: center;
         }
+
+        .modal.show {
+        opacity: 1;
+        visibility: visible;
+        }
+
 
     /* Close button moves to modal level and uses FontAwesome */
     .modal .close {
