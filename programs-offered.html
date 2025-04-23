@@ -74,6 +74,74 @@
             height: 100px; /* Fixed height for all images */
         }
         }
+
+        /* Full-page sleek modal */
+        .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        overflow: hidden;
+        padding: 20px;
+        box-sizing: border-box;
+        }
+
+    /* Close button moves to modal level and uses FontAwesome */
+    .modal .close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    .modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    margin: 5% auto;
+    background: transparent;
+    padding: 20px;
+    text-align: center;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+
+    .modal-content .description {
+    max-width: 700px;
+    color: #fff;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    }
+
+
+    .modal-content h2 {
+      color: #fff;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .modal-content p {
+      color: #fff;
+      font-size: 1.2rem;
+      max-width: 600px;
+      line-height: 1.5;
+    }
+
+    @media only screen and (max-width: 768px) {
+      .gallery-item {
+        width: 100px;
+        height: 100px;
+      }
+    }
     </style>
 </head>
 <body>
@@ -104,79 +172,121 @@
             <li class="nav-item"><a href="Contact-us.html" class="nav-link">Contact Us</a></li>
         </ul>
     </nav>
+
     <div class="content">
         <div class="gallery">
-            <div class="gallery-item" onclick="scrollToSection('toddler-group')">
-                <img src="Images/toddler-group.jpg" alt="Toddler Group">
-                <div class="overlay">Toddler Group</div>
-            </div>
-            <div class="gallery-item" onclick="scrollToSection('stage-1')">
-                <img src="Images/stage-1.jpg" alt="Stage 1">
-                <div class="overlay">Stage 1</div>
-            </div>
-            <div class="gallery-item" onclick="scrollToSection('stage-2')">
-                <img src="Images/stage-2.jpg" alt="Stage 2">
-                <div class="overlay">Stage 2</div>
-            </div>
-            <div class="gallery-item" onclick="scrollToSection('stage-3')">
-                <img src="Images/stage-3.jpg" alt="Stage 3">
-                <div class="overlay">Stage 3</div>
-            </div>
-            <div class="gallery-item" onclick="scrollToSection('grade-1')">
-                <img src="Images/grade-1.jpg" alt="Grade 1">
-                <div class="overlay">Grade 1</div>
-            </div>
-            <div class="gallery-item" onclick="scrollToSection('grade-2')">
-                <img src="Images/grade-2.jpg" alt="Grade 2">
-                <div class="overlay">Grade 2</div>
-            </div>
-            <div class="gallery-item" onclick="scrollToSection('sparks')">
-                <img src="Images/sparks.jpg" alt="SPARKS">
-                <div class="overlay">SPARKS</div>
-            </div>
-            <div class="gallery-item" onclick="scrollToSection('ialpha')">
-                <img src="Images/ialpha.jpg" alt="iAlpha">
-                <div class="overlay">iAlpha</div>
-            </div>
+          <div class="gallery-item" data-title="Toddler Group" onclick="openModal('Toddler Group')">
+            <img src="Images/toddler-group.jpg" alt="Toddler Group">
+            <div class="overlay">Toddler Group</div>
+          </div>
+          <div class="gallery-item" data-title="Stage 1" onclick="openModal('Stage 1')">
+            <img src="Images/stage-1.jpg" alt="Stage 1">
+            <div class="overlay">Stage 1</div>
+          </div>
+          <div class="gallery-item" data-title="Stage 2" onclick="openModal('Stage 2')">
+            <img src="Images/stage-2.jpg" alt="Stage 2">
+            <div class="overlay">Stage 2</div>
+          </div>
+          <div class="gallery-item" data-title="Stage 3" onclick="openModal('Stage 3')">
+            <img src="Images/stage-3.jpg" alt="Stage 3">
+            <div class="overlay">Stage 3</div>
+          </div>
+          <div class="gallery-item" data-title="Grade 1" onclick="openModal('Grade 1')">
+            <img src="Images/grade-1.jpg" alt="Grade 1">
+            <div class="overlay">Grade 1</div>
+          </div>
+          <div class="gallery-item" data-title="Grade 2" onclick="openModal('Grade 2')">
+            <img src="Images/grade-2.jpg" alt="Grade 2">
+            <div class="overlay">Grade 2</div>
+          </div>
+          <div class="gallery-item" data-title="Grade 3" onclick="openModal('Grade 3')">
+            <img src="Images/grade-3.jpg" alt="Grade 3">
+            <div class="overlay">Grade 3</div>
+          </div>
         </div>
-        <div id="toddler-group" class="section">
-            <h2>Toddler Group</h2>
-            <p>Description of Toddler Group program.</p>
+    
+        <!-- Full-page sleek modal -->
+        <div id="program-modal" class="modal">
+          <button class="close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+          <div class="modal-content">
+            <h2 id="modal-title"></h2>
+            <div id="modal-desc" class="description"></div>
+          </div>
         </div>
-        <div id="stage-1" class="section">
-            <h2>Stage 1</h2>
-            <p>Description of Stage 1 program.</p>
-        </div>
-        <div id="stage-2" class="section">
-            <h2>Stage 2</h2>
-            <p>Description of Stage 2 program.</p>
-        </div>
-        <div id="stage-3" class="section">
-            <h2>Stage 3</h2>
-            <p>Description of Stage 3 program.</p>
-        </div>
-        <div id="grade-1" class="section">
-            <h2>Grade 1</h2>
-            <p>Description of Grade 1 program.</p>
-        </div>
-        <div id="grade-2" class="section">
-            <h2>Grade 2</h2>
-            <p>Description of Grade 2 program.</p>
-        </div>
-        <div id="sparks" class="section">
-            <h2>SPARKS</h2>
-            <p>Description of SPARKS program.</p>
-        </div>
-        <div id="ialpha" class="section">
-            <h2>iAlpha</h2>
-            <p>Description of iAlpha program.</p>
-        </div>
-    </div>
-    <script>
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
-    </script>
+      </div>
+
+  <script>
+    // Program descriptions mapping
+    const programData = {
+    "Toddler Group": `<p><strong>The Toddler Group: Laying the Foundation for Independent Learning</strong></p>
+    <p><strong>Overview</strong><br>The Toddler Group at Divyataa Enriched Montessori Foundation offers children aged 18 months to 3 years a rich, multi-faceted program that emphasizes practical life skills, sensorial exploration, emergent language, and movement development. Within a thoughtfully prepared environment, trained guides observe each child’s sensitive periods and introduce materials that foster independence and concentration. This stage cultivates not only foundational academic skills but also social-emotional competencies—such as grace and courtesy—and lays the groundwork for a smooth transition into the Casa (Stage 1) environment by around two years and eight months.</p>
+    <p><strong>Curriculum and Activities</strong><br>The curriculum is rooted in Practical Life exercises—such as pouring, spooning, and dressing frames—that teach toddlers everyday tasks and develop fine motor control through sequential, purposeful actions. Sensorial materials refine the child’s perceptions of color, texture, shape, and sound, engaging their innate curiosity and helping build neural pathways for later abstract learning. Early language work introduces vocabulary enrichment through storytelling, real poetry readings, and exposure to precise, varied grammar in context, laying a robust foundation for reading and communication skills. Movement and coordination are integral; activities like simple yoga plays, dancing, and child-led obstacle courses boost core strength, balance, and spatial awareness, promoting overall physical confidence.</p>
+    <p><strong>Methods and Environment</strong><br>A prepared environment tailored to toddlers features child-sized furniture, open shelving, and self-correcting materials that invite exploration and choice within clear limits. Guides employ observation to identify each child’s sensitive periods—windows of heightened readiness for skill acquisition—and introduce new challenges just as interests emerge. Acting as guides, not directors, Montessori-trained teachers lead from behind, knowing when to intervene minimally and when to step back, thus fostering self-motivation and respect for each learner’s pace. This emphasis on self-directed learning, supported by the “follow the child” philosophy, ensures that children engage deeply and autonomously, with the guide offering lessons only as needed.</p>
+    <p><strong>Benefits and Developmental Outcomes</strong><br>By encouraging independence, toddlers gain self-confidence and a sense of agency that supports emotional resilience and intrinsic motivation. The structured yet flexible work cycles nurture concentration, enabling children to focus for extended periods on activities that resonate with their interests, a skill that underpins lifelong learning. Emotional regulation emerges through Grace and Courtesy lessons, which teach polite social behaviors, respectful interaction, and body control in a calm, predictable setting. Regular interaction in a small community cultivates social skills—sharing, turn-taking, and cooperative play—laying the groundwork for positive peer relationships.</p>
+    <p><strong>Preparation for Next Stage</strong><br>Engagement with rich language experiences accelerates vocabulary growth and narrative skills, smoothing the path into phonetic reading in the Casa environment. Fine motor dexterity is refined through manipulative materials like dressing frames and stacking cylinders, ensuring readiness for more intricate Sensorial and Math work ahead. Continued gross motor challenges—such as walking on the line—develop balance and coordination, critical for classroom stamina and confidence as learners grow. Around two years and eight months, most children are primed to transition to the Children’s House (Stage 1), where they will encounter expanded Practical Life, Sensorial, Language, Math, and Cultural studies in a broader, mixed-age community.</p>`,
+
+      "Stage 1": `<p><strong>Summary</strong><br>Stage 1 at Divyataa Enriched Montessori Foundation, serves children aged 3 to 6 years in a mixed-age, three-year community, allowing them to stay in the same classroom throughout this critical developmental plane. The environment is carefully prepared according to six key principles - freedom within limits, order, beauty, connection to nature, social harmony, and intellectual stimulation - to support maximum independent learning and exploration. The curriculum is organized into five core areas—Practical Life, Sensorial, Language, Mathematics, and Cultural Studies—with hands-on, self-correcting materials that move children from concrete experience to abstract thinking. Lessons are introduced individually or in small groups exactly when a child shows readiness, fostering deep concentration, autonomy, and a joyful love of learning.</p>
+      <p><strong>Curriculum & Activities</strong><br>In the Practical Life area, children engage in activities such as pouring, spooning, dressing frames, and care of the environment that develop fine motor control, sequential thinking, and a sense of personal responsibility. Sensorial materials - color tablets, cylinder blocks, pink tower, knobless cylinders, and more - hone visual, tactile, auditory, and spatial discrimination, each with built-in control of error to promote independence and self-correction. The Language curriculum introduces sandpaper letters, the movable alphabet, and cursive formation in context, enriching vocabulary through storytelling and poetry and preparing children for fluent reading and writing. In Mathematics, learners work with Number Rods to internalize the concepts of length and quantity and progress to the Spindle Box to match numerals with corresponding sets of spindles, solidifying the foundations of counting and the concept of zero.</p>
+      <p><strong>The Wonderful World of Montessori</strong><br>Cultural Studies weave in geography (sandpaper globes, map puzzles), basic science (botany and zoology puzzle cabinets), art, music, and practical life lessons from diverse cultures, igniting curiosity about the wider world.</p>
+      <p><strong>Methods & Environment</strong><br>The prepared environment is scaled to the child’s size, with open shelving displaying materials at eye level and attractive, orderly layouts that invite deliberate choice and exploration. Guides practice meticulous observation, noting each child’s sensitive periods - windows of heightened readiness for skills like language, order, or sensory refinement - and introduce new materials in response, ensuring that each lesson resonates deeply. The Montessori approach of “concrete to abstract” paired with self-correcting materials and minimal but precise guidance builds problem-solving abilities and intrinsic motivation as children learn to assess and correct their own work without adult intervention.</p>
+      <p><strong>Benefits & Developmental Outcomes</strong><br>By empowering children to choose, persist, and master tasks independently, it cultivates self-confidence, concentration, and intrinsic motivation, qualities that research shows lead to sustained academic engagement. The multi-age setting fosters peer mentoring, empathy, and social grace, with children learning courtesy, turn-taking, and community responsibility through modeled interactions and Grace & Courtesy lessons. Sensorial work deepens cognitive structures - children refine discriminations that underpin later complex learning in mathematics and reading - while the delight of hands-on discovery instills a lifelong love of inquiry.</p>
+      <p><strong>Preparation for Next Stage</strong><br>Through daily use of dressing frames, pouring exercises, and manipulative sensorial materials, children refine fine motor and hand-eye coordination, ensuring the readiness for the more abstract language and math work awaiting them in Lower Elementary. The foundational math activities (Number Rods, Spindle Box) establish solid numerical sense and the concept of zero, paving the way for introduction to the decimal system and operations in Stage 2. Equally, the language activities—cursive formation and phonetic exploration—accelerate reading readiness, while the mixed-age community builds leadership and collaboration skills that children carry forward into the next plane of development.</p>`,
+  
+      "Stage 2": `<p>Lower Elementary (Stage 2) at Divyataa Enriched Montessori Foundation serves children aged 6 to 9 in a mixed-age classroom that deepens exploration of the five core Montessori areas—Practical Life, Sensorial, Language, Mathematics, and Cultural Studies. Rooted in a prepared environment that encourages autonomy, children engage in uninterrupted two- to three-hour work cycles, crafting their own schedules and selecting lessons based on personal interests and developmental readiness. Guides offer lessons at peak moments of curiosity and engagement, while peer mentorship and interdisciplinary learning foster confidence, leadership, and social-emotional development.</p>
+        <h3>Curriculum and Activities</h3>
+        <p>Stage 2 builds on early foundations with rich, integrated experiences across all curriculum areas. Practical Life now includes advanced tasks such as woodworking, food preparation, sewing, and time management—further developing coordination, independence, and executive functioning. Sensorial work becomes more abstract with geometric solids, volume studies, and spatial exploration that build toward later geometry. Language work expands to include grammar symbols, parts of speech, creative and expository writing, and oral presentations, sharpening communication and analytical thinking. In Mathematics, students explore operations, fractions, decimals, geometry, and early algebra with hands-on tools like the Bank Game and Fraction Circles. Cultural Studies offer a sweeping view of the world through botany, zoology, geography, history, and art, often inspired by Montessori’s “Great Lessons” that cultivate wonder, interconnected thinking, and a cosmic perspective.</p>
+        <h3>Methods and Environment</h3>
+        <p>The Lower Elementary environment is orderly, inviting, and empowering. Materials are arranged for independent access, with clearly defined sequences that encourage self-correction and discovery. Students move through uninterrupted two- to three-hour work cycles, choosing and completing tasks independently or in small groups. Guides observe attentively and introduce new lessons individually or in small groups at moments of readiness. The classroom supports peer mentorship, where older students model lessons and behaviors for younger classmates, fostering leadership, cooperation, and a sense of responsibility. Emphasis on self-assessment through control-of-error mechanisms deepens intrinsic motivation and accountability.</p>
+        <h3>Benefits and Developmental Outcomes</h3>
+        <p>Through freedom within structure, Stage 2 nurtures a strong work ethic, emotional maturity, and academic enthusiasm. Extended work periods and individualized schedules cultivate time management, focus, and perseverance. Children gain confidence and independence while developing skills in collaboration and conflict resolution through regular group projects and community building. Sensorial refinement and advanced mathematical materials support the transition from concrete to abstract reasoning. Cultural Studies enhance global awareness, critical thinking, and the ability to synthesize and present information across disciplines. Children leave Stage 2 with sharpened executive function and a strong sense of self-direction and belonging.</p>
+        <h3>Preparation for Next Stage</h3>
+        <p>Stage 2 graduates are well-prepared for the more rigorous, research-based environment of Upper Elementary. Their mastery of grammar, composition, and mathematics provides a strong academic foundation. They possess the independence, collaboration skills, and critical thinking needed to thrive in Stage 3’s more complex, integrated curriculum. Through leadership roles and mentorship, they develop a growth mindset and sense of purpose, ready to embrace the cosmic education and expansive inquiries of the 9–12 classroom.</p>
+        `,
+
+        "Stage 3": `<p><strong>Summary</strong><br>The Upper Elementary program at Divyataa Enriched Montessori Foundation is designed for children aged 9 to 12 years, encompassing Grades 4 to 6. This stage builds upon the foundations laid in the Lower Elementary years, guiding students through a period of significant intellectual, social, and emotional development. The curriculum is structured to foster abstract thinking, moral reasoning, and a deeper understanding of the interconnectedness of knowledge, aligning with the Montessori philosophy of educating the whole child.</p>
+        <p><strong>Curriculum & Activities</strong><br>The Upper Elementary curriculum is comprehensive, covering advanced topics in mathematics, language arts, science, history, geography, and the arts. In mathematics, students explore complex concepts such as fractions, decimals, percentages, and pre-algebra, using Montessori materials like the Algebraic Pegboard and Decimal Checkerboard. Language arts focus on grammar, composition, and research skills, encouraging creative writing, debates, and presentations. Science includes hands-on experiments in biology, chemistry, and physics. History and geography are integrated through thematic studies, connecting past events to present contexts to foster global awareness.</p>
+        <p>The arts are integral, with participation in music, visual arts, and drama. Practical life skills are nurtured through community service projects, environmental initiatives, and entrepreneurship activities like managing a classroom economy or organizing school events.</p>
+        <p><strong>Methods & Environment</strong><br>The classroom supports both collaboration and independent learning, with multi-age groups promoting mentorship and peer teaching. Equipped with diverse Montessori materials, it caters to varied learning styles and promotes hands-on exploration. Teachers serve as facilitators, offering individualized guidance based on each student's progress and interests. Students are encouraged to set goals, manage their time, and reflect on their work, fostering responsibility and intrinsic motivation.</p>
+        <p><strong>Benefits & Developmental Outcomes</strong><br>This program develops critical thinking, problem-solving, and decision-making skills. Interdisciplinary projects deepen understanding and real-world connections. Collaboration enhances communication and interpersonal skills. Ethical discussions help students form a strong moral compass, appreciate diversity, and cultivate empathy—preparing them as confident, socially responsible individuals.</p>
+        <p><strong>Preparation for Next Stage</strong><br>As students transition from Upper Elementary, they are well-prepared for the challenges of adolescence and higher education. Skills like research, analysis, communication, and self-regulation provide a strong foundation for secondary school and beyond. The program’s focus on self-directed learning and personal growth equips students to thrive in a complex, ever-evolving world.</p>`,
+        
+        "Grade 1": `<p><strong>Summary</strong><br>Grade 1 at Divyataa Enriched Montessori Foundation marks the commencement of the Lower Elementary program, catering to children aged 6 to 9 years. This stage builds upon the foundational skills acquired in the earlier Casa (Children's House) environment, guiding students into more abstract thinking and complex problem-solving. The curriculum is designed to foster independence, critical thinking, and a deep love for learning, aligning with the Montessori philosophy of educating the whole child.</p>
+        <p><strong>Curriculum & Activities</strong><br>In Grade 1, the curriculum encompasses core subjects such as Language Arts, Mathematics, Cultural Studies, Science, and Practical Life Skills. Language Arts focuses on enhancing reading fluency, comprehension, and writing skills. Students engage in activities like phonetic analysis, grammar exercises, and creative writing, laying the groundwork for effective communication. Mathematics introduces addition, subtraction, multiplication, and division, with Montessori materials like the Golden Beads and Stamp Game, helping students grasp abstract concepts in a concrete manner. Cultural Studies integrate geography, history, and science, encouraging students to explore the interconnectedness of the world around them. Practical Life Skills continue to develop, emphasizing responsibility, care for the environment, and social etiquette.</p>
+        <p><strong>Methods & Environment</strong><br>The Grade 1 classroom is a dynamic, mixed-age environment where students work individually or in small groups, promoting peer learning and collaboration. The Montessori method emphasizes self-directed learning, allowing students to choose activities that align with their interests and developmental readiness. Teachers act as guides, observing and facilitating rather than directly instructing, nurturing autonomy and intrinsic motivation. The classroom is equipped with a variety of hands-on materials that cater to different learning styles, ensuring each child can engage with the curriculum meaningfully.</p>
+        <p><strong>Benefits & Developmental Outcomes</strong><br>Grade 1 students benefit from an educational approach that respects their individual learning pace and style. The focus on hands-on learning and real-world applications enhances cognitive development and knowledge retention. Students develop strong social and leadership skills through collaborative projects and peer mentoring. The Montessori environment fosters responsibility, independence, and a lifelong love for learning, equipping students with the skills necessary for academic success and personal growth.</p>
+        <p><strong>Preparation for Next Stage</strong><br>The skills and knowledge acquired in Grade 1 lay a solid foundation for the subsequent years in the Lower Elementary program. Students are prepared to explore deeper academic subjects, undertake more complex projects, and assume greater responsibility for their learning. The development of critical thinking, problem-solving, and effective communication ensures students are well-equipped to navigate the challenges of the next educational stage with confidence and enthusiasm.</p>`,
+
+        "Grade 2": `<p><strong>Grade 2: Deepening Discovery and Independent Thought</strong></p>
+        <p><strong>Overview</strong><br>Grade 2 at Divyataa Enriched Montessori Foundation is a pivotal year within the Lower Elementary program, catering to children aged 7 to 8. Building upon the foundational skills acquired in Grade 1, this stage emphasizes the development of abstract thinking, moral reasoning, and a deeper understanding of the interconnectedness of knowledge. The curriculum is designed to foster independence, critical thinking, and a profound love for learning, aligning with the Montessori philosophy of educating the whole child.</p>
+        <p><strong>Curriculum & Activities</strong><br>The Grade 2 curriculum encompasses core subjects such as Language Arts, Mathematics, Cultural Studies, Science, and Practical Life Skills. In Language Arts, students enhance their reading fluency, comprehension, and writing skills through activities like phonetic analysis, grammar exercises, and creative writing. Mathematics introduces more complex concepts such as multiplication, division, and fractions using Montessori materials like the Bead Bars and Fraction Circles, facilitating a concrete understanding of abstract concepts. Cultural Studies integrate geography, history, and science, encouraging students to explore the interconnectedness of the world around them. Practical Life Skills continue to develop, emphasizing responsibility, care for the environment, and social etiquette.</p>
+        <p><strong>Methods & Environment</strong><br>The Grade 2 classroom is a dynamic, mixed-age environment where students work individually or in small groups, promoting peer learning and collaboration. The Montessori method emphasizes self-directed learning, allowing students to choose activities that align with their interests and developmental readiness. Teachers serve as guides, observing and facilitating rather than directly instructing, which nurtures autonomy and intrinsic motivation. The classroom is equipped with a variety of hands-on materials that cater to different learning styles, ensuring that each child can engage with the curriculum in a meaningful way.</p>
+        <p><strong>Benefits & Developmental Outcomes</strong><br>Grade 2 students benefit from an educational approach that respects their individual learning pace and style. The emphasis on hands-on learning and real-world applications enhances cognitive development and retention of knowledge. Students develop strong social and leadership skills through collaborative projects and peer mentoring opportunities. The Montessori environment fosters a sense of responsibility, independence, and a lifelong love for learning, equipping students with the skills necessary for academic success and personal growth.</p>
+        <p><strong>Preparation for Next Stage</strong><br>The skills and knowledge acquired in Grade 2 lay a solid foundation for the subsequent years in the Lower Elementary program. Students are prepared to delve deeper into academic subjects, undertake more complex projects, and assume greater responsibility for their learning. The development of critical thinking, problem-solving abilities, and effective communication ensures that students are well-equipped to navigate the challenges of the next educational stage with confidence and enthusiasm.</p>`,
+
+        "Grade 3": `<p><strong>Grade 3: Bridging Concrete to Abstract Thinking</strong></p>
+        <p><strong>Overview</strong><br>Grade 3 at Divyataa Enriched Montessori Foundation serves as the culminating year of the Lower Elementary program, designed for children aged 8 to 9. This stage emphasizes the transition from concrete to abstract thinking, fostering independence, critical thinking, and a deeper understanding of the interconnectedness of knowledge. The curriculum is structured to encourage self-directed learning, collaboration, and the development of a strong academic foundation.</p>
+        <p><strong>Curriculum & Activities</strong><br>In Grade 3, the curriculum encompasses core subjects such as Language Arts, Mathematics, Cultural Studies, Science, and Practical Life Skills. Language Arts focuses on enhancing reading fluency, comprehension, and writing skills. Students engage in activities like book and novel reading, book reports, reading comprehension exercises, cursive writing, journal writing, and spelling. These activities aim to develop strong communication skills and a love for literature. Mathematics introduces more complex concepts such as multiplication, division, and fractions using Montessori materials like the Bead Bars and Fraction Circles, facilitating a concrete understanding of abstract concepts. Cultural Studies integrate geography, history, and science, encouraging students to explore the interconnectedness of the world around them. Practical Life Skills continue to develop, emphasizing responsibility, care for the environment, and social etiquette.</p>
+        <p><strong>Methods & Environment</strong><br>The Grade 3 classroom is a dynamic, mixed-age environment where students work individually or in small groups, promoting peer learning and collaboration. The Montessori method emphasizes self-directed learning, allowing students to choose activities that align with their interests and developmental readiness. Teachers serve as guides, observing and facilitating rather than directly instructing, which nurtures autonomy and intrinsic motivation. The classroom is equipped with a variety of hands-on materials that cater to different learning styles, ensuring that each child can engage with the curriculum in a meaningful way.</p>
+        <p><strong>Benefits & Developmental Outcomes</strong><br>Grade 3 students benefit from an educational approach that respects their individual learning pace and style. The emphasis on hands-on learning and real-world applications enhances cognitive development and retention of knowledge. Students develop strong social and leadership skills through collaborative projects and peer mentoring opportunities. The Montessori environment fosters a sense of responsibility, independence, and a lifelong love for learning, equipping students with the skills necessary for academic success and personal growth.</p>
+        <p><strong>Preparation for Next Stage</strong><br>The skills and knowledge acquired in Grade 3 lay a solid foundation for the subsequent years in the Lower Elementary program. Students are prepared to delve deeper into academic subjects, undertake more complex projects, and assume greater responsibility for their learning. The development of critical thinking, problem-solving abilities, and effective communication ensures that students are well-equipped to navigate the challenges of the next educational stage with confidence and enthusiasm.</p>`
+    };
+
+    function openModal(title) {
+      const modal = document.getElementById('program-modal');
+      document.getElementById('modal-title').textContent = title;
+      document.getElementById('modal-desc').innerHTML = programData[title] || '<p>Information coming soon.</p>';
+      modal.style.display = 'block';
+    }
+    function closeModal() {
+      document.getElementById('program-modal').style.display = 'none';
+    }
+    window.onclick = function(event) {
+      const modal = document.getElementById('program-modal');
+      if (event.target === modal) closeModal();
+    };
+  </script>
+
+
 </body>
   <!-- Footer -->
   <footer>

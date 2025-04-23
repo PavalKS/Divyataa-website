@@ -32,3 +32,29 @@ document.addEventListener("click", function(event) {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const loader = document.querySelector('.loader');
+  
+    // 1. Hide loader after initial tiles animation completes
+    loader.addEventListener('transitionend', (e) => {
+      if (e.propertyName === 'width' && loader.classList.contains('loader--active')) {
+        loader.classList.remove('loader--active');
+      }
+    }, { once: true });
+  
+    // 2. Before navigating away, replay the tile loader, then go
+    document.querySelectorAll('.nav-link').forEach(link => {
+      // skip dropdown toggles
+      if (link.parentElement.classList.contains('dropdown-parent')) return;
+  
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        loader.classList.add('loader--active');
+        loader.offsetWidth; // force reflow to restart transitions
+        setTimeout(() => window.location = link.href, 700);
+      });
+    });
+  });
+  
+  
