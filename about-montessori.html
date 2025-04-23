@@ -9,58 +9,87 @@
   <script src="Scripts/divyataa.js" defer></script>
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-            * {
-            box-sizing: border-box;
-            }
-            body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            }
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, sans-serif; }
 
-            .programs-video-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            margin: 2rem;
-            }
+    .programs-video-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin: 2rem;
+    }
 
-            .programs-list {
-            list-style-type: disc;
-            margin-left: 1.5rem;
-            line-height: 1.6;
-            }
+    /* Tile Grid for Programs */
+    .programs-tiles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);  /* 3 columns for smaller screens */
+      gap: 1rem;
+      margin-top: 1rem;
+    }
 
-           /* 1) Define the correct 9/16 ratio on the container */
-            .video-container {
-            width: 100%;              /* fill its flex slot */
-            max-width: 400px;         /* optional cap on desktop */
-            aspect-ratio: 9 / 16;     /* force a 9∶16 box */ /* :contentReference[oaicite:0]{index=0} */
-            }
+    .tile {
+      background-color: #8A2BE2; /* purple */
+      color: #fff;
+      border-radius: 8px;
+      aspect-ratio: 1 / 1; /* maintain square shape */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.9rem;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
 
-            /* 2) Make the iframe fill the container exactly */
-            .video-container iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-            display: block;
-            }
-            @media screen and (min-width: 768px) {
-            .programs-video-wrapper {
-                flex-direction: row;
-                align-items: flex-start;
-            }
+    /* Video Container */
+    .video-container {
+      width: 100%;
+      max-width: 400px;
+      aspect-ratio: 9 / 16;
+    }
 
-            .programs-list-container,
-            .video-container {
-                flex: 1 1 0;
-            }
+    .video-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
 
-            .video-container {
-                max-width: 400px;
-            }
-            }
-    </style>
+    @media screen and (min-width: 768px) {
+      .programs-video-wrapper {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+
+      .programs-list-container,
+      .video-container {
+        flex: 1 1 0;
+      }
+
+      .video-container { max-width: 400px; }
+
+      /* Switch to 4 columns on larger screens */
+      .programs-tiles {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    /* Additional content styling */
+    .additional-content {
+      margin: 2rem;
+      line-height: 1.6;
+    }
+    .additional-content h2 {
+      margin-top: 1.5rem;
+      color: #2c3e50;
+    }
+    .additional-content p,
+    .additional-content ul {
+      margin-bottom: 1rem;
+    }
+    .additional-content ul { list-style-type: disc; margin-left: 1.5rem; }
+  </style>
 </head>
 <body>
   <header>
@@ -96,26 +125,27 @@
 
   <div class="content">
     <div class="programs-video-wrapper">
-      <!-- Left: bullet list -->
+      <!-- Left: tiled list -->
       <div class="programs-list-container">
         <h2>Divyataa Montessori Experience</h2>
         <p>
           Montessori preschool curriculum includes exercises for practical life, sensory activities,
           language, math, and culture (Science &amp; Arts).
         </p>
-        <ul class="programs-list">
-          <li>Value Education</li>
-          <li>Focus Training</li>
-          <li>Self Regulation Activities</li>
-          <li>Projects and Roleplay</li>
-          <li>Etiquette and Grooming</li>
-          <li>Sensory path</li>
-          <li>Story Telling</li>
-          <li>Music</li>
-          <li>Outdoor Play</li>
-          <li>Leadership Skills</li>
-          <li>Yoga</li>
-        </ul>
+        <div class="programs-tiles">
+          <div class="tile">Value Education</div>
+          <div class="tile">Focus Training</div>
+          <div class="tile">Self Regulation Activities</div>
+          <div class="tile">Projects and Roleplay</div>
+          <div class="tile">Etiquette and Grooming</div>
+          <div class="tile">Sensory Path</div>
+          <div class="tile">Story Telling</div>
+          <div class="tile">Music</div>
+          <div class="tile">Outdoor Play</div>
+          <div class="tile">Leadership Skills</div>
+          <div class="tile">Yoga & Karate</div>
+          <div class="tile">Sports</div>
+        </div>
       </div>
 
       <!-- Right: Google Drive video -->
@@ -125,7 +155,56 @@
           allow="autoplay; encrypted-media"
           allowfullscreen>
         </iframe>
-      </div>      
+      </div>
+    </div>
+
+    <!-- Additional Textual Content -->
+    <div class="additional-content">
+      <h2>Benefits of Montessori Education</h2>
+      <p>
+        Montessori education nurtures the whole child—cognitive, emotional, social, and physical—fostering
+        lifelong curiosity, confidence, and adaptability. Research shows that Montessori alumni exhibit
+        higher levels of psychological well-being and executive function, with gains in reading, math, and
+        vocabulary that outpace peers in traditional settings.
+      </p>
+      <ul>
+        <li>Enhanced executive function and academic readiness by the end of kindergarten.</li>
+        <li>Superior social problem-solving skills and a strong sense of community.</li>
+        <li>Elevated creativity and intrinsic motivation through self-directed learning.</li>
+      </ul>
+
+      <h2>Curriculum Highlights</h2>
+      <p>
+        Our child-centered, hands-on curriculum empowers learners to choose activities aligned with
+        their developmental stage and interests, progressing at their own pace without unnecessary
+        pressure.
+      </p>
+      <ul>
+        <li>Multi-age classrooms that foster peer mentoring and collaborative learning.</li>
+        <li>Self-paced lessons that respect individual learning rhythms.</li>
+        <li>Practical life, sensorial, language, math, and cultural studies integrated into daily work.</li>
+      </ul>
+
+      <h2>Prepared Environment</h2>
+      <p>
+        Classrooms are purposefully arranged as "prepared environments," with thoughtfully selected materials
+        within easy reach. This design promotes freedom within clear limits, enabling children to engage
+        deeply and build concentration, independence, and pride in their work.
+      </p>
+
+      <h2>Expert Educators</h2>
+      <p>
+        Our certified Montessori teachers undergo AMS-accredited training and ongoing professional
+        development. They skillfully observe and guide each child, applying research-backed practices
+        that align with developmental science and support diverse learning needs.
+      </p>
+
+      <h2>Parent Engagement</h2>
+      <p>
+        We partner with families through regular workshops, classroom observations, and community events,
+        extending Montessori principles into the home. Active parent involvement enhances social-emotional
+        learning and fosters long-term independence in children.
+      </p>
     </div>
   </div>
 </body>
