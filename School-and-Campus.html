@@ -4,11 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Divyataa Enriched Montessori Foundation</title>
-    <!-- Link to external CSS file -->
     <link rel="stylesheet" href="Styles/divyataa.css">
-    <!-- Link to external JavaScript file -->
     <script src="Scripts/divyataa.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .carousel-container {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        max-height: 80vh;
+        }
+
+        .carousel-track {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        width: 100%;
+        }
+
+        .carousel-slide {
+        flex: 0 0 100vw;
+        height: auto;
+        }
+
+        .carousel-slide img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+        }
+
+        .carousel-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(255, 255, 255, 0.7);
+        border: none;
+        font-size: 2rem;
+        padding: 10px 15px;
+        cursor: pointer;
+        z-index: 2;
+        border-radius: 50%;
+        }
+
+        .carousel-arrow.left {
+        left: 20px;
+        }
+
+        .carousel-arrow.right {
+        right: 20px;
+        }
+
+        .carousel-description {
+        max-width: 900px;
+        margin: 30px auto;
+        padding: 0 20px;
+        text-align: center;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        }
+
+        .desc {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        }
+
+        .desc.active {
+        display: block;
+        opacity: 1;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -38,6 +103,28 @@
             <li class="nav-item"><a href="Contact-us.html" class="nav-link">Contact Us</a></li>
         </ul>
     </nav>
+
+      
+    <!-- Arrows -->
+    <div class="carousel-container">
+        <div class="carousel-track">
+            <div class="carousel-slide"><img src="Images/campus1.png" alt="Divyataa Campus 1" /></div>
+            <div class="carousel-slide"><img src="Images/campus2.png" alt="Divyataa Campus 2" /></div>
+            <div class="carousel-slide"><img src="Images/campus3.png" alt="Divyataa Campus 3" /></div>
+        </div>
+        
+        <!-- Arrows -->
+        <button class="carousel-arrow left">&#10094;</button>
+        <button class="carousel-arrow right">&#10095;</button>
+        
+        <div class="carousel-description">
+            <p class="desc active">The Divyataa Enriched Montessori Foundation campus is a harmonious fusion of classical architecture and purposeful educational spaces...</p>
+            <p class="desc">Our classrooms are extensions of this philosophy—airy, open, and filled with natural light...</p>
+            <p class="desc">From indoor environments to outdoor play areas, the seamless design supports the Montessori ideal...</p>
+        </div>
+        </div>
+            
+      
 </body>
   <!-- Footer -->
   <footer>

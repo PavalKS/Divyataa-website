@@ -69,3 +69,43 @@ function openModal(title) {
     });
   });
   
+  const track = document.querySelector('.carousel-track');
+  const slides = document.querySelectorAll('.carousel-slide');
+  const descriptions = document.querySelectorAll('.desc');
+  const leftBtn = document.querySelector('.carousel-arrow.left');
+  const rightBtn = document.querySelector('.carousel-arrow.right');
+
+  let currentIndex = 0;
+  const totalSlides = slides.length;
+
+  function showSlide(index) {
+    track.style.transform = `translateX(-${index * 100}vw)`;
+
+    descriptions.forEach((desc, i) => {
+      desc.classList.toggle('active', i === index);
+    });
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    showSlide(currentIndex);
+    resetAutoScroll();
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    showSlide(currentIndex);
+    resetAutoScroll();
+  }
+
+  leftBtn.addEventListener('click', prevSlide);
+  rightBtn.addEventListener('click', nextSlide);
+
+  let autoScroll = setInterval(nextSlide, 6000);
+
+  function resetAutoScroll() {
+    clearInterval(autoScroll);
+    autoScroll = setInterval(nextSlide, 6000);
+  }
+
+  window.addEventListener('resize', () => showSlide(currentIndex));
