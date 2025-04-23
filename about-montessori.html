@@ -23,16 +23,16 @@
     /* Tile Grid for Programs */
     .programs-tiles {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);  /* 3 columns for smaller screens */
+      grid-template-columns: repeat(3, 1fr); /* 3 columns for smaller screens */
       gap: 1rem;
       margin-top: 1rem;
     }
 
     .tile {
-      background-color: #8A2BE2; /* purple */
+      background-color: #6d0680; /* purple */
       color: #fff;
       border-radius: 8px;
-      aspect-ratio: 1 / 1; /* maintain square shape */
+      aspect-ratio: 1 / 1; /* square shape */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -72,6 +72,12 @@
       /* Switch to 4 columns on larger screens */
       .programs-tiles {
         grid-template-columns: repeat(4, 1fr);
+      }
+
+      .site-footer {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
       }
     }
 
@@ -207,5 +213,34 @@
       </p>
     </div>
   </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-wrapper">
+      <div class="footer-details">
+        <h2>Contact Information</h2>
+        <p><strong>Address:</strong> Divyataa - Enriched Montessori Foundation, 76/6, "PAVAL", Park-In, Angeripalayam Main Road, Tirupur</p>
+        <p><strong>Call us:</strong> <a href="tel:+919751112300">9751112300</a></p>
+        <p><strong>Email:</strong> <a href="mailto:divyataa.info@gmail.com">divyataa.info@gmail.com</a></p>
+        <div class="social-media-buttons">
+            <h2>Socials</h2>
+            <a href="https://www.facebook.com/divyataa.divyataa.7" target="_blank" class="social-link">
+              <i class="fab fa-facebook-f"></i> Facebook
+            </a>
+            <a href="https://www.instagram.com/divyataa.montessori/" target="_blank" class="social-link">
+              <i class="fab fa-instagram"></i> Instagram
+            </a>
+            <a href="https://wa.me/919751112300" target="_blank" class="social-link">
+              <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+          </div>          
+      </div>
+      <div class="map-container">
+        <h2>Location</h2>
+        <iframe src="https://www.google.com/maps/embed/v1/place?q=divyataa+enriched+montessori+foundation&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8" allowfullscreen></iframe>
+      </div>
+    </div>
+  </footer>
+  
 </body>
 </html>
