@@ -65,7 +65,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    background-color: #d784ca;
+    background-color: #4c0441;
 }
 
 nav ul ul {
@@ -87,6 +87,7 @@ nav ul ul li a {
 
 .dropdown-parent .dropdown.active {
     display: block;
+    background-color: #8c0aa3;    
 }
 
 .content {
@@ -191,6 +192,8 @@ nav ul ul li a {
 
     .dropdown-parent.active .dropdown {
         display: block;
+        background-color: #8c0aa3;
+        margin-top: -10px;
     }
 
     .hamburger {

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="Styles/divyataa.css">
     <!-- Link to external JavaScript file -->
     <script src="Scripts/divyataa.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             margin: 0;
@@ -28,6 +29,10 @@
             height: auto;
         }
     </style>
+
+<div id="fb-root"></div>
+<script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v22.0"></script>
+
 </head>
 <body>
     <header>
@@ -45,7 +50,7 @@
         <ul class="nav-menu">
             <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
             <li class="nav-item dropdown-parent">
-                <a href="#" class="nav-link" onclick="toggleDropdown(event)">About</a>
+                <a href="#" class="nav-link" onclick="toggleDropdown(event)">About  <i class="fa-solid fa-chevron-down" style="padding: 0.25rem;"></i></i></a>
                 <ul class="dropdown">
                     <li class="nav-item"><a href="about-us.html" class="nav-link">About Us</a></li>
                     <li class="nav-item"><a href="about-montessori.html" class="nav-link">About Montessori</a></li>
@@ -58,5 +63,16 @@
         </ul>
     </nav>
     <div class="gallery" id="gallery-container">
+        <div class="fb-page"
+        data-href="https://www.facebook.com/divyataa.montessori/"
+        data-tabs="timeline"
+        data-width="480"
+        data-height="600"
+        data-small-header="false"
+        data-adapt-container-width="true"
+        data-hide-cover="false"
+        data-show-facepile="true">
+        </div>
+   </div>   
 </body>
 </html>
