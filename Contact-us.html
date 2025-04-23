@@ -1,106 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-    <!-- Link to external CSS file -->
-    <link rel="stylesheet" href="Styles/divyataa.css">
-    <!-- Link to external JavaScript file -->
-    <script src="Scripts/divyataa.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us</title>
+  <!-- External CSS -->
+  <link rel="stylesheet" href="Styles/divyataa.css" />
+  <!-- Font Awesome for Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    
+    .contact-section {
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+    }
 
-        .contact-info {
-            margin-bottom: 20px;
-        }
+    .contact-info {
+      flex: 1;
+      margin-bottom: 2rem;
+    }
 
-        .contact-info p {
-            margin: 10px 0;
-        }
+    .contact-info h2 {
+      margin-bottom: 1rem;
+    }
 
-        .social-media-buttons {
-            margin-bottom: 20px;
-        }
+    .contact-info p {
+      margin: 0.5rem 0;
+    }
 
-        .social-media-buttons a {
-            display: inline-block;
-            margin-right: 10px;
-            text-decoration: none;
-            color: #fff;
-            background-color: #3b5998; /* Facebook blue */
-            padding: 10px 15px;
-            border-radius: 5px;
-        }
+    .contact-info a {
+      color: #8c0aa3;
+      text-decoration: none;
+    }
 
-        .social-media-buttons a.instagram {
-            background-color: #c32aa3; /* Instagram pink */
-        }
+    .social-media {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
 
-        .map-container {
-            margin-bottom: 20px;
-        }
+    .social-media a {
+      color: #8c0aa3;
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
 
-        .map-container iframe {
-            width: 100%;
-            height: 300px;
-            border: none;
-        }
-    </style>
+    .social-media a:hover {
+      color: #000000;
+    }
+
+    .map-container {
+      margin-top: 2rem;
+    }
+
+    .map-container h2 {
+      margin-bottom: 1rem;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+    }
+
+    @media (min-width: 768px) {
+      .contact-section {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .contact-info {
+        flex: 1;
+        margin-right: 2rem;
+      }
+
+      .map-container {
+        flex: 1;
+        margin-top: 0;
+      }
+
+      .map-container iframe {
+        height: 300px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="hamburger" onclick="toggleMenu()">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-        <a href="index.html">
-            <img src="Images/logo-plain.png" alt="Divyataa Logo" class="logo-header">
-        </a>
-        <h1 class="school-name-header">Divyataa Enriched Montessori Foundation</h1>
-    </header>
-    <nav class="navbar">
-        <ul class="nav-menu">
-            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-            <li class="nav-item dropdown-parent">
-                <a href="#" class="nav-link" onclick="toggleDropdown(event)">About  <i class="fa-solid fa-chevron-down" style="padding: 0.25rem;"></i></i></a>
-                <ul class="dropdown">
-                    <li class="nav-item"><a href="about-us.html" class="nav-link">About Us</a></li>
-                    <li class="nav-item"><a href="about-montessori.html" class="nav-link">Why Montessori</a></li>
-                </ul>
-            </li>
-            <li class="nav-item"><a href="programs-offered.html" class="nav-link">Programs Offered</a></li>
-            <li class="nav-item"><a href="School-and-Campus.html" class="nav-link">School & Campus</a></li>
-            <li class="nav-item"><a href="Gallery.html" class="nav-link">Gallery</a></li>
-            <li class="nav-item"><a href="Contact-us.html" class="nav-link">Contact Us</a></li>
-        </ul>
-    </nav>
+  <header>
+    <img src="Images/logo-plain.png" alt="Divyataa Logo" class="logo-header" />
+    <h1 class="school-name-header">Divyataa Enriched Montessori Foundation</h1>
+  </header>
+  <nav class="navbar">
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+      <li class="nav-item"><a href="about-us.html" class="nav-link">About Us</a></li>
+      <li class="nav-item"><a href="about-montessori.html" class="nav-link">Why Montessori</a></li>
+      <li class="nav-item"><a href="programs-offered.html" class="nav-link">Programs Offered</a></li>
+      <li class="nav-item"><a href="School-and-Campus.html" class="nav-link">School & Campus</a></li>
+      <li class="nav-item"><a href="Gallery.html" class="nav-link">Gallery</a></li>
+      <li class="nav-item"><a href="Contact-us.html" class="nav-link">Contact Us</a></li>
+    </ul>
+  </nav>
+  <main class="contact-section">
     <div class="contact-info">
-        <h2>Contact Information</h2>
-        <p><strong>Address:</strong> Divyataa- Enriched Montessori Foundation, 76/6, DIVYATAA, "PAVAL", PARK-IN, ANGERIPALAYAM MAIN ROAD, TIRUPUR</p>
-        <p><strong>Call us:</strong> Phone number: <a href="tel:+919751112300">9751112300</a></p>
-        <p><strong>Email:</strong> <a href="mailto:divyataa.info@gmail.com">divyataa.info@gmail.com</a></p>
+      <h2>Contact Information</h2>
+      <p><strong>Address:</strong> Divyataa - Enriched Montessori Foundation, 76/6, "PAVAL", Park-In, Angeripalayam Main Road, Tirupur</p>
+      <p><strong>Call us:</strong> <a href="tel:+919751112300"><i class="fas fa-phone-alt"></i> 9751112300</a></p>
+      <p><strong>Email:</strong> <a href="mailto:divyataa.info@gmail.com"><i class="fas fa-envelope"></i> divyataa.info@gmail.com</a></p>
+      <div class="social-media-buttons">
+        <h2>Socials</h2>
+        <a href="https://www.facebook.com/divyataa.divyataa.7" target="_blank" class="social-link">
+          <i class="fab fa-facebook-f"></i> Facebook
+        </a>
+        <a href="https://www.instagram.com/divyataamontessori/" target="_blank" class="social-link">
+          <i class="fab fa-instagram"></i> Instagram
+        </a>
+        <a href="https://wa.me/919751112300" target="_blank" class="social-link">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+      </div>          
+  </div>
     </div>
-
-    <div class="social-media-buttons">
-        <h2>Follow Us</h2>
-        <a href="https://www.facebook.com/divyataa.divyataa.7" target="_blank">Facebook</a>
-        <a href="https://www.instagram.com/divyataa.montessori/" target="_blank" class="instagram">Instagram</a>
-    </div>
-
-    <div class="message-whatsapp">
-        <h2>Message Us on WhatsApp</h2>
-        <p><a href="https://wa.me/919751112300" target="_blank">Click here to message us on WhatsApp</a></p>
-    </div>
-
     <div class="map-container">
-        <h2>Location</h2>
-        <div style="text-decoration:none; overflow:hidden;max-width:100%;width:100%;height:500px;"><div id="canvas-for-googlemap" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=divyataa+enriched+montessori+foundation&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe></div><a class="google-maps-html" href="https://www.bootstrapskins.com/themes" id="enable-map-data">premium bootstrap themes</a><style>#canvas-for-googlemap img.text-marker{max-width:none!important;background:none!important;}img{max-width:none}</style></div>
-    </div>
+        <h2 style="color: #000000;">Location</h2>
+        <iframe
+        src="https://www.google.com/maps/embed/v1/place?q=divyataa+enriched+montessori+foundation&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
+          allowfullscreen
+        ></iframe>
+      </div>
+  </main>
 </body>
 </html>
