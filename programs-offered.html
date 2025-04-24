@@ -10,147 +10,143 @@
     <script src="Scripts/divyataa.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* Gallery Container */
         .content {
-            padding: 20px;
+          padding: 20px;
         }
 
         .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            margin-bottom: 40px;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px;
+          justify-content: center;
+          margin-bottom: 40px;
         }
 
+        /* Individual Gallery Items */
         .gallery-item {
-            position: relative;
-            width: 200px;
-            height: 200px; /* Fixed height for all images */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            overflow: hidden; /* Hide overflow for cropping effect */
+          position: relative;
+          width: 200px;
+          height: 200px;          /* Fixed height for all images */
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          overflow: hidden;       /* Hide overflow for cropping effect */
         }
 
+        /* Gallery Item Images */
         .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Crop images to fit container */
+          width: 100%;
+          height: 100%;
+          object-fit: cover;      /* Crop images to fit container :contentReference[oaicite:0]{index=0} */
+          display: block;         /* Prevent inline gaps :contentReference[oaicite:1]{index=1} */
         }
 
+        /* Overlay Container (now fully opaque) */
         .gallery-item .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: left;
-            opacity: 0.75; /* Always visible */
-            transition: opacity 0.3s;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.5); /* keep semi-transparent background if desired :contentReference[oaicite:2]{index=2} */
+          opacity: 1;                      /* fully opaque overlay :contentReference[oaicite:3]{index=3} */
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: left;
+          transition: opacity 0.3s;
         }
 
+        /* Ensure overlayed images are also fully opaque */
+        .gallery-item .overlay img {
+          opacity: 1;                      /* remove any inherited transparency :contentReference[oaicite:4]{index=4} */
+        }
+
+        /* Hover State (optional stronger highlight) */
         .gallery-item:hover .overlay {
-            opacity: 1;
+          opacity: 1;
         }
 
-        .section {
-            margin-bottom: 40px;
-        }
-
-        .section h2 {
-            font-size: 20px;
-            margin-top: 0;
-        }
-
-        .section p {
-            margin: 10px 0;
-        }
+        /* Responsive Gallery Items */
         @media only screen and (max-width: 768px) {
-            .gallery-item {
+          .gallery-item {
             width: 100px;
-            height: 100px; /* Fixed height for all images */
-        }
+            height: 100px;
+          }
         }
 
         /* Full-page sleek modal */
         .modal {
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 1s ease, visibility 1s ease;
-        display: flex;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.95);
-        padding: 20px;
-        box-sizing: border-box;
-        align-items: center;
-        justify-content: center;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 1s ease, visibility 1s ease;
+          display: flex;
+          position: fixed;
+          z-index: 1000;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.95);
+          padding: 20px;
+          box-sizing: border-box;
+          align-items: center;
+          justify-content: center;
         }
 
         .modal.show {
-        opacity: 1;
-        visibility: visible;
+          opacity: 1;
+          visibility: visible;
         }
 
+        /* Close Button */
+        .modal .close {
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          background: none;
+          border: none;
+          color: #fff;
+          font-size: 2rem;
+          cursor: pointer;
+          z-index: 1001;
+        }
 
-    /* Close button moves to modal level and uses FontAwesome */
-    .modal .close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 2rem;
-      cursor: pointer;
-      z-index: 1001;
-    }
-    .modal-content {
-    position: relative;
-    max-width: 90%;
-    max-height: 90%;
-    margin: 5% auto;
-    background: transparent;
-    padding: 20px;
-    text-align: center;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    }
+        /* Modal Content */
+        .modal-content {
+          position: relative;
+          max-width: 90%;
+          max-height: 90%;
+          margin: 5% auto;
+          background: transparent;
+          padding: 20px;
+          text-align: center;
+          overflow-y: auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
 
-    .modal-content .description {
-    max-width: 700px;
-    color: #fff;
-    font-size: 1.2rem;
-    line-height: 1.6;
-    }
+        /* Hide modal title always */
+        .modal-content h2 {
+          display: none;
+        }
 
+        /* Modal Description */
+        .modal-content .description {
+          max-width: 700px;
+          color: #fff;
+          font-size: 1.2rem;
+          line-height: 1.6;
+        }
 
-    .modal-content h2 {
-      display: none;
-    }
+        /* Modal Paragraphs */
+        .modal-content p {
+          color: #fff;
+          font-size: 1.2rem;
+          max-width: 600px;
+          line-height: 1.5;
+        }
 
-    .modal-content p {
-      color: #fff;
-      font-size: 1.2rem;
-      max-width: 600px;
-      line-height: 1.5;
-    }
-
-    @media only screen and (max-width: 768px) {
-      .gallery-item {
-        width: 100px;
-        height: 100px;
-      }
-    }
     </style>
 </head>
 <body>
@@ -186,31 +182,31 @@
         <div class="gallery">
           <div class="gallery-item" data-title="Toddler Group" onclick="openModal('Toddler Group')">
             <img src="Images/toddler-group.jpg" alt="Toddler Group">
-            <div class="overlay">Toddler Group</div>
+            <div class="overlay"><img src="Images/toddlergrp.png" style="max-width: 100px; height: auto;"></div>
           </div>
           <div class="gallery-item" data-title="Stage 1" onclick="openModal('Stage 1')">
             <img src="Images/stage-1.jpg" alt="Stage 1">
-            <div class="overlay">Stage 1</div>
+            <div class="overlay"><img src="Images/stg1.png" style="max-width: 100px; height: auto;"></div>
           </div>
           <div class="gallery-item" data-title="Stage 2" onclick="openModal('Stage 2')">
             <img src="Images/stage-2.jpg" alt="Stage 2">
-            <div class="overlay">Stage 2</div>
+            <div class="overlay"><img src="Images/stg2.png" style="max-width: 100px; height: auto;"></div>
           </div>
           <div class="gallery-item" data-title="Stage 3" onclick="openModal('Stage 3')">
             <img src="Images/stage-3.jpg" alt="Stage 3">
-            <div class="overlay">Stage 3</div>
+            <div class="overlay"><img src="Images/stg3.png" style="max-width: 100px; height: auto;"></div>
           </div>
           <div class="gallery-item" data-title="Grade 1" onclick="openModal('Grade 1')">
             <img src="Images/grade-1.jpg" alt="Grade 1">
-            <div class="overlay">Grade 1</div>
+            <div class="overlay"><img src="Images/grd1.png" style="max-width: 100px; height: auto;"></div>
           </div>
           <div class="gallery-item" data-title="Grade 2" onclick="openModal('Grade 2')">
             <img src="Images/grade-2.jpg" alt="Grade 2">
-            <div class="overlay">Grade 2</div>
+            <div class="overlay"><img src="Images/grd2.png" style="max-width: 100px; height: auto;"></div>
           </div>
           <div class="gallery-item" data-title="Grade 3" onclick="openModal('Grade 3')">
             <img src="Images/grade-3.jpg" alt="Grade 3">
-            <div class="overlay">Grade 3</div>
+            <div class="overlay"><img src="Images/grd3.png" style="max-width: 100px; height: auto;"></div>
           </div>
         </div>
     
